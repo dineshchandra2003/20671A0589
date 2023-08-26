@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Schedule App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="time"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Train Schedule App</h1>
+    </header>
+    <div class="container">
+        <form id="schedule-form">
+            <label for="train-name">Train Name:</label>
+            <input type="text" id="train-name" name="train-name" required>
+
+            <label for="departure-time">Departure Time:</label>
+            <input type="time" id="departure-time" name="departure-time" required>
+
+            <input type="submit" value="Add to Schedule">
+        </form>
+        <table id="schedule-table">
+            <tr>
+                <th>Train Name</th>
+                <th>Departure Time</th>
+            </tr>
+            <!-- Sample data rows will be added dynamically using JavaScript -->
+        </table>
+    </div>
+
+    <script>
+        const form = document.getElementById("schedule-form");
+        const table = document.getElementById("schedule-table");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const trainNameInput = document.getElementById("train-name");
+            const departureTimeInput = document.getElementById("departure-time");
+
+            const trainName = trainNameInput.value;
+            const departureTime = departureTimeInput.value;
+
+            // Create new row in the table
+            const newRow = table.insertRow(-1);
+            const cell1 = newRow.insertCell(0);
+            const cell2 = newRow.insertCell(1);
+
+            cell1.textContent = trainName;
+            cell2.textContent = departureTime;
+
+            // Clear input fields
+            trainNameInput.value = "";
+            departureTimeInput.value = "";
+        });
+    </script>
+</body>
+</html>
